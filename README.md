@@ -2,7 +2,7 @@
 
 ## 捐赠(donate)
 
-![捐赠](https://images.gitee.com/uploads/images/2020/1121/052730_a420ac68_576226.png "38a12cd9e68965b77373cf918e6419c.png")
+![捐赠](https://images.gitee.com/uploads/images/2020/1121/053137_62272659_576226.jpeg "38a12cd9e68965b77373cf918e6419c.jpg")
 
 ## 安装(Install)
 
