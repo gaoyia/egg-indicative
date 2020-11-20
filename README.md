@@ -1,28 +1,8 @@
 # egg-indicative
 
-[![NPM version][npm-image]][npm-url]
-[![build status][travis-image]][travis-url]
-[![Test coverage][codecov-image]][codecov-url]
-[![David deps][david-image]][david-url]
-[![Known Vulnerabilities][snyk-image]][snyk-url]
-[![npm download][download-image]][download-url]
+## 捐赠(donate)
 
-[npm-image]: https://img.shields.io/npm/v/egg-indicative.svg?style=flat-square
-[npm-url]: https://npmjs.org/package/egg-indicative
-[travis-image]: https://img.shields.io/travis/eggjs/egg-indicative.svg?style=flat-square
-[travis-url]: https://travis-ci.org/eggjs/egg-indicative
-[codecov-image]: https://img.shields.io/codecov/c/github/eggjs/egg-indicative.svg?style=flat-square
-[codecov-url]: https://codecov.io/github/eggjs/egg-indicative?branch=master
-[david-image]: https://img.shields.io/david/eggjs/egg-indicative.svg?style=flat-square
-[david-url]: https://david-dm.org/eggjs/egg-indicative
-[snyk-image]: https://snyk.io/test/npm/egg-indicative/badge.svg?style=flat-square
-[snyk-url]: https://snyk.io/test/npm/egg-indicative
-[download-image]: https://img.shields.io/npm/dm/egg-indicative.svg?style=flat-square
-[download-url]: https://npmjs.org/package/egg-indicative
-
-<!--
-Description here.
--->
+![捐赠](https://images.gitee.com/uploads/images/2020/1121/052730_a420ac68_576226.png "38a12cd9e68965b77373cf918e6419c.png")
 
 ## 安装(Install)
 
