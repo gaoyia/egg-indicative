@@ -93,23 +93,34 @@ see [https://indicative.adonisjs.com/guides/master/configure](https://indicative
     const rules = {
       username: "required|alpha",
     };
+
+    // or
+    // const rules = {
+    //   username: [
+    //     app.validations.required()
+    //   ]
+    // }
+
     const rulesName = {
       username: "用户名(your_name)",
     };
+
     const messages = {
       required: (field, validation, args) => {
         return `${rulesName[field]}不能为空`;
       },
       "username.alpha": "用户名必须是字母",
     };
+
+
     let data = this.app.request.query
     let res;
-    res = await ctx.validate(rules, messages, data); // 可选，默认为this.request.body // data default = this.request.body
+    res = await ctx.validate(rules, messages, data); // data? 可选，default is this.request.body
     res = await ctx.validateAll(rules, messages);
 
     // or
     let config = removeAdditional: true,
-    res = app.validate(data, rules, messages, config)  // config可选 // config?
+    res = app.validate(data, rules, messages, config)  // config? 可选
     res = app.validateAll(data, rules, messages)
   }
 
