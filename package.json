@@ -1,14 +1,17 @@
 {
   "name": "egg-indicative",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "indicative plugin for egg",
   "eggPlugin": {
     "name": "indicative"
   },
   "keywords": [
+    "egg-validate",
+    "eggValidate",
     "egg",
     "eggPlugin",
-    "egg-plugin"
+    "egg-plugin",
+    "egg-validate"
   ],
   "dependencies": {
     "indicative": "^7.4.4"

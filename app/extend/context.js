@@ -1,15 +1,12 @@
 "use strict";
 
 module.exports = {
-  async validate(data, rules, messages) {
+  async validate(rules, messages, data = null) {
     data = data || this.request.body;
-    let res;
-    try {
-      res = await this.app.validator(data, rules, messages);
-    } catch (error) {
-      // 暂时未知该异步方法会有什么异常
-      res = error.message;
-    }
-    return res;
+    return await this.app.validator(data, rules, messages);
+  },
+  async validateAll(rules, messages, data = null) {
+    data = data || this.request.body;
+    return await this.app.validatorAll(data, rules, messages);
   },
 };
