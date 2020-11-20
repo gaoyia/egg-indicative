@@ -112,14 +112,14 @@ see [https://indicative.adonisjs.com/guides/master/configure](https://indicative
 const rules = {
     // 正则
   username: [
-    validations.regex(['^[a-z]+'])
+    app.validations.regex(['^[a-z]+'])
   ],
   username: [
-    validations.regex([new RegExp('^  [a-z]+')])
+    app.validations.regex([new RegExp('^  [a-z]+')])
   ],
   url: 'url',
   url: [
-    validations.url()
+    app.validations.url()
   ]
   // 字符串
   username: 'string',
@@ -152,31 +152,31 @@ const rules = {
   // '0',0,'false' => false  // '1',1,'true' => true
   is_vip: 'boolean',
   is_vip: [
-    validations.boolean()
+    app.validations.boolean()
   ],
   //--------datetime-----------日期时间相关------------
   confCall: `date|after:${new Date()}`,
   confCall: [
-    validations.date(),
-    validations.after([new Date()])
+    app.validations.date(),
+    app.validations.after([new Date()])
   ],
   meetup: 'date|after_offset_of:4,months',
   meetup: [
-    validations.date(),
-    validations.afterOffsetOf([4, 'months'])
+    app.validations.date(),
+    app.validations.afterOffsetOf([4, 'months'])
   ],
   confCall: 'date|before:2019-11-20',
   confCall: [
-    validations.date(),
-    validations.before(['2019-11-20'])
+    app.validations.date(),
+    app.validations.before(['2019-11-20'])
   ],
   meetup: 'date|before_offset_of:4,months',
   meetup: [
-    validations.date(),
-    validations.beforeOffsetOf([4, 'months'])
+    app.validations.date(),
+    app.validations.beforeOffsetOf([4, 'months'])
   ],
   publish_at: [
-    validations.dateFormat(['YYYY-MM-DD HH:mm:ss'])
+    app.validations.dateFormat(['YYYY-MM-DD HH:mm:ss'])
   ],
   // [date] can use
   // 2015-03-25 (ISO Date)
@@ -185,152 +185,152 @@ const rules = {
   // 25 Mar 2015 (Long Date)
   login_at: 'date',
   login_at: [
-    validations.date()
+    app.validations.date()
   ]
   //-------------日期相关结束---------------
   // 必须包含
   username: 'required',
   username: [
-    validations.required()
+    app.validations.required()
   ],
   // 如果字段存在，则强制needs_delivery存在
   address: 'required_if:needs_delivery',
   address: [
-    validations.requiredIf(['needs_delivery'])
+    app.validations.requiredIf(['needs_delivery'])
   ],
   address: 'required_when:checkout_type,deliver'
   address: [
-    validations.requiredWhen(['checkout_type', 'deliver'])
+    app.validations.requiredWhen(['checkout_type', 'deliver'])
   ],
   tax_id: 'required_with_all:car,house',
   tax_id: [
-    validations.requiredWithAll(['car', 'house'])
+    app.validations.requiredWithAll(['car', 'house'])
   ],
   password: 'required_with_any:username,email',
   password: [
-    validations.requiredWithAny(['username', 'email'])
+    app.validations.requiredWithAny(['username', 'email'])
   ],
   zipcode: 'required_without_all:address,state',
   zipcode: [
-    validations.requiredWithoutAll(['address', 'state'])
+    app.validations.requiredWithoutAll(['address', 'state'])
   ],
   email: 'required_without_any:username,account_id',
   email: [
-    validations.requiredWithoutAny(['username', 'account_id'])
+    app.validations.requiredWithoutAny(['username', 'account_id'])
   ],
   // ---------------数字---------------
   // above 大于
   age: 'number|above:20',
   age: [
-    validations.number(),
-    validations.above([20])
+    app.validations.number(),
+    app.validations.above([20])
   ],
   // float 浮点型
   age: 'float',
   age: [
-    validations.float()
+    app.validations.float()
   ],
   // integer 整型
   age: 'integer',
   age: [
-    validations.integer()
+    app.validations.integer()
   ],
   // number
   game_points: 'number',
   game_points: [
-    validations.number()
+    app.validations.number()
   ],
   // range 范围
   age: 'integer|range:16,60',
   age: [
-    validations.integer(),
-    validations.range([16, 60])
+    app.validations.integer(),
+    app.validations.range([16, 60])
   ],
   // under 强制小于
   age: 'integer|under:60',
   age: [
-    validations.integer(),
-    validations.under(60)
+    app.validations.integer(),
+    app.validations.under(60)
   ]
   // ---------------数字结束------------
   // object 对象
   user: 'object'
   user: [
-    validations.object()
+    app.validations.object()
   ],
   // confirmed确认 ，当设置该属性后，【属性名_confirmation】必须存在，且值应该相等
   password: 'confirmed',
   password: [
-    validations.confirmed()
+    app.validations.confirmed()
   ],
   // different 不同的，secondary_email,primary_email 应该不相同
   secondary_email: 'different:primary_email'，
   secondary_email: [
-    validations.different(['primary_email'])
+    app.validations.different(['primary_email'])
   ],
   // equals 宽松相等
   coupon: 'equals:5050',
   coupon: [
-    validations.equals([5050])
+    app.validations.equals([5050])
   ],
   // in 必须是允许的值
   post_status: 'in:draft,published',
   post_status: [
-    validations.in(['draft', 'published'])
+    app.validations.in(['draft', 'published'])
   ],
   // not_equals 不能等于
   username: 'not_equals:root',
   username: [
-    validations.notEquals(['root'])
+    app.validations.notEquals(['root'])
   ],
   // not_in 值不能等于
   username: 'not_in:root,admin,super',
   username: [
-    validations.notIn(['root', 'admin', 'super'])
+    app.validations.notIn(['root', 'admin', 'super'])
   ]
   // same 必须和其它属性的值一样
   password_confirmation: 'same:password',
   password_confirmation: [
-    validations.same(['password'])
+    app.validations.same(['password'])
   ],
   // 这个没看懂
   terms: 'accepted',
   terms: [
-    validations.accepted()
+    app.validations.accepted()
   ],
   //必须是字母
   username: 'alpha',
   username: [
-    validations.alpha()
+    app.validations.alpha()
   ],
   // /^[a-z0-9]+$/i
   username: 'alpha_numeric',
   username: [
-    validations.alphaNumeric()
+    app.validations.alphaNumeric()
   ],
   // 电子邮箱
   email: 'email'，
   email: [
-    validations.email()
+    app.validations.email()
   ],
   // ends_with  强制验证下的字段的值以特定的子字符串结束。此验证还将在进行检查之前修剪空白。
   reg_no: 'ends_with:qaw', //starts_with 特定字符起始
   reg_no: [
-    validations.endsWith(['qaw'])
+    app.validations.endsWith(['qaw'])
   ],
   // 强制字段值包含给定的子字符串。
   url: 'includes:indicative',
   url: [
-    validations.includes(['indicative'])
+    app.validations.includes(['indicative'])
   ],
   // 强制字段值为有效ip地址
   ip_address: 'ip', //ipv4,ipv6
   ip_address: [
-    validations.ip() //ipv4,ipv6
+    app.validations.ip() //ipv4,ipv6
   ],
   payload: 'json',
   payload: [
-    validations.json()
+    app.validations.json()
   ]
 }
 
@@ -355,14 +355,86 @@ app.sanitize(data, schema);
     bio: 'I am the best',
   }
 */
+```
+
+```js
+// 过滤器的使用方法// 只能移除 &, ", ', < 和 > 字符
+const sanitizationRules = {
+  message: "escape",
+};
+// or
+const sanitizationRules = {
+  message: [app.sanitizations.escape()],
+};
+
+// 类似的有
+const Example = {
+  plural: "将值转换为其复数版本。如果value不是字符串，那么它将原样返回。",
+  singular: "将值转换为它的单数版本。如果value不是字符串，那么它将原样返回。",
+  slug:
+    "将字符串转换为URL友好的字符。如果value不是字符串，它将原样返回。它还将处理ascii图表并将它们转换为utf-8计数器部分。",
+  strip_links: "从给定字符串中去掉标记。",
+  strip_tags: "从字符串中去除HTML标记。如果value不是字符串，它将原样返回。",
+  trim: "从给定字符串的两边移除空格。",
+};
+
+// 其他的;
+// normalizeEmail 通过删除不需要的字符来规范化电子邮件地址。例如foo+bar@gmail.com将会变成foobar@gmail.com，它还会对字符大小写进行规范化。
+const sanitizationRules = {
+  email: [app.sanitizations.normalizeEmail()],
+};
+
+// pass options
+const sanitizationRules = {
+  email: [
+    app.sanitizations.normalizeEmail([
+      {
+        all_lowercase: true,
+        icloud_remove_subaddress: true,
+      },
+    ]),
+  ],
+};
+
+// lower_case  将字段值转换为小写。这个规则是区域有关的。
+const sanitizationRules = {
+  hexCode: "lower_case",
+};
+// or
+const sanitizationRules = {
+  hexCode: [app.sanitizations.lowerCase()],
+};
+// or
+const sanitizationRules = {
+  label: "lower_case:fr-CA",
+};
+// or
+const sanitizationRules = {
+  label: [app.sanitizations.lowerCase(["fr-CA"])],
+};
+
+// upper_case 将字段值转换为大写。这个规则是区域有关的。
+const sanitizationRules = {
+  hexCode: "upper_case",
+};
+// or
+const sanitizationRules = {
+  hexCode: [app.sanitizations.upperCase()],
+};
+const sanitizationRules = {
+  label: "upper_case:fr-CA",
+};
+// or
+const sanitizationRules = {
+  label: [app.sanitizations.upperCase(["fr-CA"])],
+};
+```
+
 ### 查看更多的规则 (mroe rules)
 
 [规则(mroe rules)](https://indicative.adonisjs.com/validations/master/array)
 
 [过滤器规则(mroe rules)](https://indicative.adonisjs.com/sanitizations/master/escape)
-
-
-```
 
 ## 疑难解答和建议 Questions & Suggestions
 
