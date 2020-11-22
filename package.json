@@ -1,6 +1,6 @@
 {
   "name": "egg-indicative",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "indicative plugin for egg",
   "eggPlugin": {
     "name": "indicative"
@@ -49,12 +49,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/eggjs/egg-indicative.git"
+    "url": "git+https://github.com/gaoyia/egg-indicative.git"
   },
   "bugs": {
-    "url": "https://github.com/eggjs/egg/issues"
+    "url": "https://github.com/gaoyia/egg/issues"
   },
-  "homepage": "https://github.com/eggjs/egg-indicative#readme",
+  "homepage": "https://github.com/gaoyia/egg-indicative#readme",
   "author": "gaoyia@qq.com",
   "license": "MIT"
 }
