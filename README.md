@@ -30,6 +30,9 @@ module.exports = (appInfo) => {
     indicative: {
       existyStrict: false,
       removeAdditional: false,
+      throwError: true, // 是否自动抛出异常 仅在ctx下的验证器中有效
+      throwStatus: 422, // 状态码
+      throwMessage: "Validation Failed", // 抛出异常的信息
     },
   };
   // ...or....
@@ -54,6 +57,18 @@ The existyStrict property tells validator, which properties must be considered n
 是否从原数据对象中删除未参与验证的数据。
 
 Setting it true will make validator remove all non validated key/value pairs from the main data object.
+
+### throwError ( true )
+
+是否自动抛出异常 仅在 ctx 下的验证器中有效
+
+### throwStatus ( 422 )
+
+返回的状态码
+
+### throwMessage ( Validation Failed )
+
+默认抛出异常的信息
 
 #### 查看更多配置信息
 
