@@ -95,10 +95,10 @@ see [https://indicative.adonisjs.com/guides/master/configure](https://indicative
     };
 
 
-    let data = this.app.request.query
+    let data = this.ctx.request.query
     let res;
     res = await ctx.validate(rules, messages, data); // data? 可选，default is this.request.body
-    res = await ctx.validateAll(rules, messages);
+    res = await ctx.validateAll(rules, messages); // validateAll 验证所有参数
 
     // or
     let config = removeAdditional: true,
