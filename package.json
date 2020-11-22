@@ -1,6 +1,6 @@
 {
   "name": "egg-indicative",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "indicative plugin for egg",
   "eggPlugin": {
     "name": "indicative"

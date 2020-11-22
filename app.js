@@ -1,5 +1,5 @@
 const path = require("path");
-const indicative = class AppBootHook {
+class AppBootHook {
   constructor(app) {
     this.app = app;
   }
@@ -11,8 +11,8 @@ const indicative = class AppBootHook {
     this.app.sanitize = require("indicative/sanitizer").sanitize; //引入过滤器
     this.app.sanitizations = require("indicative/sanitizer").sanitize; //引入净化器
     // 引入validate目录，并注入app实例
-    const directory = path.join(this.app.config.baseDir, "app/validate");
-    this.app.loader.loadToApp(directory, "validate");
+    // const directory = path.join(this.app.config.baseDir, "app/validate");
+    // this.app.loader.loadToApp(directory, "validate");
   }
-};
-module.exports = indicative;
+}
+module.exports = AppBootHook;
