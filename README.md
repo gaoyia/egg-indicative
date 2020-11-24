@@ -122,6 +122,57 @@ see [https://indicative.adonisjs.com/guides/master/configure](https://indicative
   }
 
 ```
+#### 你可以将验证器拆分到 app/validate 目录下按模块划分
+例如:
+```js
+// 文件路径： app/validate/v1/user.js
+class UserValidate {
+    constructor(ctx) {
+        this.app = ctx.app
+        this.ctx = ctx
+        this.validate = this.app.validate
+        this.rules = {
+            username: [
+                this.app.validations.regex([new RegExp('^[a-zA-Z][a-zA-Z0-9_\-]{5,29}$')]),
+            ],
+            email: [
+                this.app.validations.email(),
+            ]
+        }
+    }
+    rulesName = {
+        username: "用户名",
+        email: "电子邮箱",
+    }
+    message = {
+        "username.regex": (field) => {
+            return `${this.rulesName[field]}不符合规则，用户名只能使用字母开头，包含字母数字减号和下划线，6-30个字符`;
+        },
+        "email.regex": (field) => {
+            return `${this.rulesName[field]}格式不正确`;
+        },
+        required: (field) => {
+            return `${this.rulesName[field]}不能为空`;
+        },
+    }
+    async test() {
+        let rs = {}
+        let list = ['username']
+        list.forEach(i => {
+            rs[i] = (this.rules[i])
+        })
+        rs.username.push(this.app.validations.required())
+        const res = await this.ctx.validate(rs, this.message, this.ctx.request.query);
+        return res;
+    }
+}
+module.exports = UserValidate
+
+// 在控制器中使用ctx.$v访问定义的方法
+const validated = await ctx.$v.v1.user.test()
+
+```
+
 
 ```js
 const rules = {

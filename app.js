@@ -1,18 +1,24 @@
 const path = require("path");
+const validator = require("indicative/validator")
+const sanitizer = require("indicative/sanitizer")
 class AppBootHook {
   constructor(app) {
     this.app = app;
+    validator.configure(this.app.config.indicative); // 加载配置
+    this.app.validateAll = validator.validateAll; //引入验证器ALL
+    this.app.validate = validator.validate; //引入验证器
+    this.app.validations = validator.validations;
+    this.app.sanitize = sanitizer.sanitize; //引入过滤器
+    this.app.sanitizations = sanitizer.sanitize; //引入净化器
   }
   async didLoad() {
-    require("indicative/validator").configure(this.app.config.indicative); // 加载配置
-    this.app.validateAll = require("indicative/validator").validateAll; //引入验证器ALL
-    this.app.validate = require("indicative/validator").validate; //引入验证器
-    this.app.validations = require("indicative/validator").validations;
-    this.app.sanitize = require("indicative/sanitizer").sanitize; //引入过滤器
-    this.app.sanitizations = require("indicative/sanitizer").sanitize; //引入净化器
-    // 引入validate目录，并注入app实例
-    // const directory = path.join(this.app.config.baseDir, "app/validate");
-    // this.app.loader.loadToApp(directory, "validate");
+    // 引入validate目录
+    const validatePaths = this.app.loader.getLoadUnits().map(unit => path.join(unit.path, 'app/validate'));
+
+    this.app.loader.loadToContext(validatePaths, '$v', {
+      call: true,
+      fieldClass: 'validateClasses',
+    });
   }
 }
 module.exports = AppBootHook;
