@@ -133,7 +133,7 @@ class UserValidate {
         this.validate = this.app.validate
         this.rules = {
             username: [
-                this.app.validations.regex([new RegExp('^[a-zA-Z][a-zA-Z0-9_\-]{5,29}$')]),
+                this.app.validations.regex([/^1[3-9]\d{9}$/]),
             ],
             email: [
                 this.app.validations.email(),
@@ -178,10 +178,10 @@ const validated = await ctx.$v.v1.user.test()
 const rules = {
     // 正则
   username: [
-    app.validations.regex(['^[a-z]+'])
+    app.validations.regex([/^1[3-9]\d{9}$/])
   ],
   username: [
-    app.validations.regex([new RegExp('^  [a-z]+')])
+    app.validations.regex([/^1[3-9]\d{9}$/])
   ],
   url: 'url',
   url: [
